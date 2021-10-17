@@ -1,0 +1,12 @@
+a.custom-card{
+    text-decoration: none;
+    color: inherit;
+}
+a.custom-card:hover{
+    color: inherit;
+}
+
+img.recipe-img{
+    width: 8rem;
+    height: 5rem;
+}

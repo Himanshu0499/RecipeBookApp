@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <img src="{{recipe.imageUrl}}" alt="{{recipe.name}}" class="card-img-top img-responsive">
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h2 class="card-title">{{recipe.name}}</h2>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" (click)="toggleOpen()">
+                            Manage 
+                        </button>
+                        <!-- Adding the class show in array of class if isOpen is true. -->
+                        <ul class="dropdown-menu" [class.show]="isOpen">
+                            <li class="dropdown-item" (click)="onToShoppingList()">To Shoping List</li>
+                            <li class="dropdown-item" (click)="onEditRecipe()">Edit Recipe</li>
+                            <li class="dropdown-item" (click)="onDeleteRecipe()">Delete Recipe</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p class="card-text"> {{recipe.description}} </p>
+                <ul class="list-group">
+                    <li class="list-group-item" 
+                        *ngFor="let ingredient of recipe.ingredients"
+                    >{{ingredient.name}} ({{ingredient.quantity}})</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,34 @@
+<div class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+    <div class="container-fluid">
+        <a class="navbar-brand">Recipe Book</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" >
+                <a class="nav-link" routerLink="/recipes" routerLinkActive="active" (click)="onCheckAuth()">Recipe Book</a>
+                <a class="nav-link" routerLink="/shopping-list" routerLinkActive="active" (click)="onCheckAuth()">Shopping List</a> 
+
+                <div class="dropdown" *ngIf="isAuthenticated">
+                    <a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Manage
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" (click)="onStoreData()">Save Data</a></li>
+                      <li><a class="dropdown-item" (click)="onFetchData()">Fetch Data</a></li>
+                    </ul>
+                </div> 
+                <span class="navbar-text me-2" *ngIf="isSaving">
+                    <div class="spinner-border spinner-border-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </span>
+                <span class="navbar-text me-2" *ngIf="recipeSaved">Recipes Saved!</span>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" *ngIf = "isAuthenticated" (click)="onLogout()">Logout</a>
+                <a class="nav-link" routerLink='/auth' *ngIf = "!isAuthenticated" >Sign In</a>
+            </div>
+        </div>
+    </div>
+</div>

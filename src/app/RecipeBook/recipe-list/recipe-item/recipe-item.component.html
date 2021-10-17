@@ -1,0 +1,13 @@
+<a class="custom-card" style="cursor: pointer;" (click)="onClick()">
+   <div class="card mt-3">
+         <div class="card-body d-flex">
+            <div>
+               <h3 class="card-title">{{recipe.name}}</h3>
+               <p> {{recipe.description}} </p>
+            </div>
+            <span class="ms-auto">
+               <img src="{{recipe.imageUrl}}" alt="{{ recipe.name }}" class="recipe-img">   
+            </span>
+         </div>        
+   </div>
+</a>

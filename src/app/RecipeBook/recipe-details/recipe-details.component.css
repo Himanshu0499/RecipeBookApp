@@ -1,0 +1,7 @@
+img.card-img-top{
+    height: 30rem;
+}
+
+li.dropdown-item{
+    cursor: pointer;
+}

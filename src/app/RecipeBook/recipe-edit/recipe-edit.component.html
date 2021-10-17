@@ -1,0 +1,72 @@
+<div class="row d-flex justify-content-center">
+   <div class="col-11">
+      <div class="card">
+         <div class="card-body">
+         <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+               <label for="name" class="form-label">Recipe Name</label>
+               <input 
+                  type="text" 
+                  class="form-control" 
+                  id="name" 
+                  placeholder="Enter Recipe name"
+                  formControlName="name"
+                  >
+            </div>
+            <div class="form-group mb-3">
+               <label for="image" class="form-label">Recipe Image</label>
+               <input 
+                  type="text" 
+                  class="form-control" 
+                  id="image" 
+                  placeholder="Enter Image Url"
+                  formControlName="imageUrl"
+                  #imagePath>
+            </div>
+            <div class="mb-3">
+               <img [src]="imagePath.value" class="img-thumbnail">
+            </div>
+            <div class="form-group mb-4">
+               <label for="description" class="form-label">Recipe Description</label>
+               <textarea 
+                  type="text" 
+                  class="form-control" 
+                  id="description" 
+                  row="6"
+                  formControlName="description">
+               </textarea>
+            </div>
+            <div formArrayName="ingredients">
+               <div class="d-flex justify-content-between">
+                  <label class="form-label">Recipe Ingredients</label>
+                  <button 
+                     class="btn btn-outline-success mb-3" 
+                     (click)="onAddIngredient()"          
+                     type="button">Add Ingredient  
+                  </button> 
+               </div>
+               <div class="row" 
+                  *ngFor="let ingredient of controls ; let i = index"
+                  [formGroupName]="i">
+                  <div class="col-sm-6 mb-3">
+                  <input type="text" class="form-control" placeholder="Ingredient name" formControlName="name">
+                  </div>
+                  <div class="col-sm-3 mb-3">
+                     <input type="number" class="form-control" placeholder="Quantity" formControlName="quantity">
+                  </div>
+                  <div class="col-sm-2 mb-3">
+                     <button type="button" class="btn btn-outline-danger" (click)="onDeleteIngredient(i)">&#x2715;</button>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col">
+               <button class="btn btn-outline-success" type="submit" [disabled]="recipeForm.invalid">Save</button>
+               <button class="btn btn-outline-danger ms-2" type="button" [routerLink]="['../']">Cancel</button>
+               </div>
+            </div>
+         </form>
+         </div>
+      </div>
+   </div>
+</div>
